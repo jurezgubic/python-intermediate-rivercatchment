@@ -76,9 +76,12 @@ def daily_max(data):
     Index must be np.datetime64 compatible format."""
     return data.groupby(data.index.date).max()
 
-
 def daily_min(data):
     """Calculate the daily min of a 2d data array.
     Index must be np.datetime64 compatible format."""
     return data.groupby(data.index.date).min()
 
+def daily_std(data):
+    """Calculate the daily standard deviation of a 2d data array.
+    Index must be np.datetime64 compatible format."""
+    return data.groupby(data.index.date).std()
