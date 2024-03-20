@@ -2,10 +2,11 @@ import numpy as np
 import numpy.testing as npt
 from pathlib import Path
 
-def test_analyse_data():
-    from catchment.compute_data import analyse_data
+def test_compute_data():
+    from catchment.compute_data import analyse_data, CSVDataSource
     path = Path.cwd() / "data"
-    result = analyse_data(path)
+    data_source = CSVDataSource(path)
+    result = analyse_data(data_source)
     expected_output = [ [0.        , 0.18801829],
                        [0.10978448, 0.43107373],
                        [0.06066156, 0.0699624 ],
