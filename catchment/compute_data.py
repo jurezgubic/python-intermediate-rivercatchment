@@ -9,21 +9,23 @@ from catchment import models, views
 
 
 def analyse_data(data_dir):
-    """Calculate the standard deviation by day between datasets.
+    """Analyse the data in the data directory."""
+    data = load_data(data_dir)
+    daily_standard_deviation = compute_standard_deviation_by_day(data)
+    return daily_standard_deviation
 
-    Gets all the measurement data from the CSV files in the data directory,
-    works out the mean for each day, and then graphs the standard deviation
-    of these means.
-    """
+
+def load_data(data_dir):
+    """Load all the data from the CSV files in the data directory."""
     data_file_paths = glob.glob(os.path.join(data_dir, 'rain_data_2015*.csv'))
     if len(data_file_paths) == 0:
         raise ValueError('No CSV files found in the data directory')
     data = map(models.read_variable_from_csv, data_file_paths)
+    return data
 
-    daily_std_list = []
-    for dataset in data:
-        daily_std = dataset.groupby(dataset.index.date).std()
-        daily_std_list.append(daily_std)
+
+def compute_standard_deviation_by_day(data):
+    daily_std_list = map(models.daily_std, data)
 
     daily_standard_deviation = pd.concat(daily_std_list)
     return daily_standard_deviation
