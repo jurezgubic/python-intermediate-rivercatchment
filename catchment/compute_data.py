@@ -26,7 +26,7 @@ class JSONDataSource:
         data_file_paths = glob.glob(os.path.join(data_dir, 'rain_data_2015*.json'))
         if len(data_file_paths) == 0:
             raise ValueError('No CSV files found in the data directory')
-        data = map(models.read_variable_from_j, data_file_paths)
+        data = map(models.read_variable_from_json, data_file_paths)
         return data 
 
 
