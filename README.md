@@ -1,7 +1,7 @@
 # RiverCatch
 RiverCatch is a data management system written in Python that manages measurement data collected in river catchment surveys and campaigns.
-# RiverCatch
-![Continuous Integration build in GitHub Actions](https://github.com/<your_github_username>/python-intermediate-catchment/workflows/CI/badge.svg?branch=main)
+
+[![Continuous Integration build in GitHub Actions]](https://github.com/<your_github_username>/python-intermediate-catchment/workflows/CI/badge.svg?branch=main)
 
 ## Main features
 Here are some key features of Inflam:
