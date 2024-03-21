@@ -29,7 +29,7 @@ def main(args):
 
         view_data = {'daily sum': models.daily_total(measurement_data), 'daily average': models.daily_mean(
             measurement_data), 'daily max': models.daily_max(measurement_data), 'daily min': models.daily_min(measurement_data)}
-
+    
         views.visualize(view_data)
 
 

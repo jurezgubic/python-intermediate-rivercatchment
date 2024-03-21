@@ -29,3 +29,4 @@ def compute_standard_deviation_by_day(data):
 
     daily_standard_deviation = pd.concat(daily_std_list)
     return daily_standard_deviation
+

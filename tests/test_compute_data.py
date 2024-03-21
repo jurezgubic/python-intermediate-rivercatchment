@@ -39,3 +39,8 @@ def test_analyse_data():
                        [0.18285024, 0.19707288],
                        [0.19176008, 0.13915472]]
     npt.assert_array_almost_equal(result, expected_output)
+
+
+def daily_total(measurement_data):
+    
+    return data.groupby(data.index.date).sum()
