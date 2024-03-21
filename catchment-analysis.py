@@ -22,10 +22,10 @@ def main(args):
         
         _, extension = os.path.splitext(InFiles[0])
         if extension == '.json':
-            data_source = JSONDataSource(os.path.dirname(InFiles[0]))
-            elif extension == '.csv':
-            data_source = CSVDataSource(os.path.dirname(InFiles[0]))
-            else:
+            data_source = compute_data.JSONDataSource(os.path.dirname(InFiles[0]))
+        elif extension == '.csv':
+            data_source = compute_data.CSVDataSource(os.path.dirname(InFiles[0]))
+        else:
             raise ValueError(f'Unsupported file format: {extension}')
 
         #data_source = compute_data.CSVDataSource(os.path.dirname(InFiles[0]))
@@ -44,6 +44,15 @@ def main(args):
         
         views.visualize(view_data)
 
+def create_argparse():
+    parser = argparse.ArgumentParser(
+    description='A basic environmental data management system')
+
+    parser.add_argument(
+        'infiles',
+        nargs='+',
+        help='Input CSV containing measurement data')
+    
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='A basic environmental data management system')
