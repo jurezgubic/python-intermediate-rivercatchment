@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-'''Software for managing and tracking environmental data from field project.'''
+"""Software for managing and tracking environmental data from field project."""
 import argparse
 from catchment import models, views
 
 def main(args):
-    '''The MVC Controller of the environmental data system.
+    """The MVC Controller of the environmental data system.
 
     The Controller is responsible for:
     - selecting the necessary models and views for the current task
     - passing data between models and views
-    '''
+    """
 
     in_files = args.infiles
     if not isinstance(in_files, list):
