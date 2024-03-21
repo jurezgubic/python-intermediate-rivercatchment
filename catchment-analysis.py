@@ -46,23 +46,27 @@ def main(args):
 
 def create_argparse():
     parser = argparse.ArgumentParser(
-    description='A basic environmental data management system')
+        description='A basic environmental data management system')
+    
+    req_group = parser.add_argument_group('required arguments')
 
     parser.add_argument(
         'infiles',
         nargs='+',
         help='Input CSV containing measurement data')
     
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description='A basic environmental data management system')
+    req_group.add_argument(
+        '-m', '--measurements',
+        help = 'Name of measurement data series to load'
+    )
     
-    parser.add_argument(
-        'infiles',
-        nargs='+',
-        help='Input CSV(s) containing measurement data')
-
-    parser.add_argument('--full-data-analysis', action='store_true', dest='full_data_analysis')
+    parser.add_argument('--full-data-analysis',
+                        action ='store_true',
+                        dest='full_data_analysis')
+    return parser
+    
+if __name__ == "__main__":
+    parser = create_argparse()
     
     args = parser.parse_args()
     
