@@ -40,7 +40,7 @@ def main(args):
         views.visualize(graph_data)
 
     for filename in InFiles:
-        measurement_data = models.read_variable_from_csv(filename)
+        measurement_data = models.read_variable_from_csv(filename, args.measurements)
 
         view_data = {'daily sum': models.daily_total(measurement_data),
                      'daily average': models.daily_mean(measurement_data),
@@ -52,14 +52,16 @@ def main(args):
 
 def create_argparse():
     parser = argparse.ArgumentParser(
-    description='A basic environmental data management system')
+        description='A basic environmental data management system')
+
+    req_group = parser.add_argument_group('Required arguments')
 
     parser.add_argument(
         'infiles',
         nargs='+',
         help='Input CSV(s) containing measurement data')
 
-    parser.add_argument(
+    req_group.add_argument(
         '-m', '--measurements',
         help='The name of the measurement data series to load',
     )
