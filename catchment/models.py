@@ -8,17 +8,17 @@ time across all sites.
 """
 import numpy as np
 import pandas as pd
-def read_variable_from_xlm(filename):
+def read_variable_from_xml(filename):
     """Reads a named variable from a CSV file, and returns a
-    pandas dataframe containing that variable. The XLM file must contain
+    pandas dataframe containing that variable. The XML file must contain
     a column of dates, a column of site ID's, and (one or more) columns
     of data - only one of which will be read.
 
-    :param filename: Filename of XLM to load
+    :param filename: Filename of XML to load
     :return: 2D array of given variable. Index will be dates,
              Columns will be the individual sites
     """
-    dataset = pd.read_xlm(filename)
+    dataset = pd.read_xml(filename)
 
     dataset = dataset.rename({'Date':'OldDate', 'Site_Name': 'Site Name', 'Rainfall_mm': 'Rainfall (mm)'}, axis='columns')
     dataset['Date'] = [pd.to_datetime(x,dayfirst=True) for x in dataset['OldDate']]
